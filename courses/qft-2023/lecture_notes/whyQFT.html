@@ -1,0 +1,730 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>绪论 &#8212; 量子场论</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'whyQFT';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="量子场论讲义（2023年秋冬学期）" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/qft_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/qft_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    量子场论讲义（2023年秋冬学期）
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">绪论</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/whyQFT.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>绪论</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">量子场论简介</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">预备知识（持续更新中）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">自然单位制</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">狭义相对论约定</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">相对论性量子力学与因果律破坏</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>绪论<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<section id="id2">
+<h2>量子场论简介<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>量子场论是迄今为止描述基本粒子，如电子，光子，夸克，黑格斯玻色子等的相互作用规律的最成功无理论。不仅如此，量子场论的方法和概念也在如经典和量子引力，凝聚态物理，原子分子物理，宇宙学等物理学的各个分支中获得广泛而重要的应用。从某种意义上说，量子场论是整个现代物理学的理论框架，其重要性不亚于微积分之于经典物理学。这样一个如此成功的理论是从何而来的？发展它的原初动机是什么？它有哪些成功的应用和局限？量子场论作为描述自然界迄今为止最为复杂的理论框架，我们不太可能在一个学期内彻底掌握它，但至少希望经过这一门课的学习，能为同学们打开一扇窗户，也为将来更深入地掌握量子场论的概念和方法，乃至做出有意义的工作奠定基础。</p>
+<p><strong>此讲义漏洞甚多，欢迎同学们指出！</strong></p>
+</section>
+<section id="id3">
+<h2>预备知识（持续更新中）<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<section id="id4">
+<h3>自然单位制<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>由于我们将主要讨论相对论性的量子现象，如无特殊说明，我们将采用粒子物理学家的自然单位制（其实主要是想偷懒）。在自然单位制下，</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d6c84b6d-679e-41a9-8086-f17cac920f35">
+<span class="eqno">(1)<a class="headerlink" href="#equation-d6c84b6d-679e-41a9-8086-f17cac920f35" title="Permalink to this equation">#</a></span>\[\begin{equation}
+c = \hbar = 1
+\end{equation}\]</div>
+<p>在自然单位制下，所有带量纲常数（在不考虑统计力学量的情况下）均可用质量量纲表示。例如：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e4520f45-d32e-46a2-89a5-4d91ba8e3da7">
+<span class="eqno">(2)<a class="headerlink" href="#equation-e4520f45-d32e-46a2-89a5-4d91ba8e3da7" title="Permalink to this equation">#</a></span>\[\begin{gather}
+[E] = [Mc^2] = [M]\\
+[P] = \left[ \frac{Mv}{\sqrt{1 - v^2/c^2}}\right] = [M]\\
+[\text{Length}] = [\hbar/P] = [M^{-1}]\\
+[\text{time}] = [\hbar/E] = [M^{-1}]
+\end{gather}\]</div>
+<p>牛顿引力常数：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-de87c6d6-088d-44ee-a7bb-f593c25f3290">
+<span class="eqno">(3)<a class="headerlink" href="#equation-de87c6d6-088d-44ee-a7bb-f593c25f3290" title="Permalink to this equation">#</a></span>\[\begin{equation}
+[G] = \left[V L M^{-2}\right] = [M M^{-1} M^{-2}] = [M^{-2}]
+\end{equation}\]</div>
+<p>其中<span class="math notranslate nohighlight">\(V\)</span>是势能，<span class="math notranslate nohighlight">\(L\)</span>是长度。</p>
+<p>习惯上我们以电子伏特（eV）作为能量（质量）单位，则一些典型的物理量可以表示为：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2478aa95-3c5c-4ef7-b774-6e5977d48546">
+<span class="eqno">(4)<a class="headerlink" href="#equation-2478aa95-3c5c-4ef7-b774-6e5977d48546" title="Permalink to this equation">#</a></span>\[\begin{align}
+&amp; m_\text{electron} = 5.11 \times 10^5 \text{eV} = 511 \text{KeV} = 0.511 \text{MeV}
+\\
+&amp;m_\text{proton} = 9.383 \times 10^8 \text{eV} = 938.3 \text{MeV} = 0.9383 \text{GeV}
+\\
+&amp;m_\text{neutron} = 9.395 \times 10^8 \text{eV} = 939.5 \text{MeV} = 0.9395 \text{GeV}
+\\
+&amp;m_\text{pion} = 1.395 \times 10^8 \text{eV} = 139.5 \text{MeV} = 0.1395 \text{GeV}
+\\
+&amp;m_\text{top} = 1.73 \times 10^{11} \text{eV} = 173 \text{GeV}
+\\
+&amp;m_\text{Higgs} = 1.25 \times 10^{11} \text{eV} = 125 \text{GeV}
+\\
+&amp;m_\text{sun} = 1.12 \times 10^{66} \text{eV} 
+\\
+&amp;m_\text{Planck} = \sqrt{\frac{\hbar c}{G}} = 1.22 \times 10^{19} \text{GeV}
+\end{align}\]</div>
+<p>自然单位制下的真空介电常数和真空磁导率为：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f4ef48e5-254f-4831-a3b9-9c727757e51c">
+<span class="eqno">(5)<a class="headerlink" href="#equation-f4ef48e5-254f-4831-a3b9-9c727757e51c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\epsilon_0 = \mu_0 = 1
+\end{equation}\]</div>
+<p>量子电动力学中的精细结构常数为：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d39bf4c1-c990-4e2f-97ed-b00814a816f9">
+<span class="eqno">(6)<a class="headerlink" href="#equation-d39bf4c1-c990-4e2f-97ed-b00814a816f9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\alpha = \frac{e^2}{4\pi \epsilon_0 \hbar c} \simeq \frac{1}{137}
+\end{equation}\]</div>
+<p>其中<span class="math notranslate nohighlight">\(e\)</span>为电子电荷。</p>
+</section>
+<section id="id5">
+<h3>狭义相对论约定<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>四维逆变矢量：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-62308fd2-d090-4801-812f-adbe63663e30">
+<span class="eqno">(7)<a class="headerlink" href="#equation-62308fd2-d090-4801-812f-adbe63663e30" title="Permalink to this equation">#</a></span>\[\begin{align}
+x^\mu = (t, \vec{x}) = (x^0, x^1, x^2, x^3) \\
+p^\mu = (E, \vec{p}) = (p^0, p^1, p^2, p^3)
+\end{align}\]</div>
+<p><span class="math notranslate nohighlight">\(x\)</span>和<span class="math notranslate nohighlight">\(y\)</span>两点间的洛伦兹不变间隔（应用爱因斯坦求和约定）：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b1051e60-1be1-4823-8099-5b20900ddc9b">
+<span class="eqno">(8)<a class="headerlink" href="#equation-b1051e60-1be1-4823-8099-5b20900ddc9b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\Delta s^2 = \eta_{\mu\nu} (x - y)^\mu (x - y)^\nu = (x^0 - y^0)^2 - (\vec{x} - \vec{y})^2
+\end{equation}\]</div>
+<p>其中<span class="math notranslate nohighlight">\(\eta_{\mu\nu}\)</span>为闵氏空间中的度规张量：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8a5f1b55-d062-463b-bd39-396678860ad4">
+<span class="eqno">(9)<a class="headerlink" href="#equation-8a5f1b55-d062-463b-bd39-396678860ad4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\eta_{\mu\nu} = \text{diag}(1, -1, -1, -1)
+\end{equation}\]</div>
+<p>在这个度规约定下，</p>
+<div class="amsmath math notranslate nohighlight" id="equation-27d50e93-8d0c-481e-83da-3d05cb1054c6">
+<span class="eqno">(10)<a class="headerlink" href="#equation-27d50e93-8d0c-481e-83da-3d05cb1054c6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\Delta s^2 = \left\{ 
+  \begin{array}{ll}
+    &gt; 0 &amp; \text{time-like，类时间隔} \\
+    = 0 &amp; \text{light-like，类光间隔} \\
+    &lt; 0 &amp; \text{space-like，类空间隔}
+\end{array}
+\right.
+\end{equation}\]</div>
+<p>闵氏空间度规的逆定义为：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3851cfe0-e775-4cd1-a05d-fa3152cffaf9">
+<span class="eqno">(11)<a class="headerlink" href="#equation-3851cfe0-e775-4cd1-a05d-fa3152cffaf9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\eta_{\mu\nu} \eta^{\nu \rho} = \delta_\mu^\rho
+\end{equation}\]</div>
+<p>可以验证：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e3adde9a-840b-4a3a-893d-f8faefe08915">
+<span class="eqno">(12)<a class="headerlink" href="#equation-e3adde9a-840b-4a3a-893d-f8faefe08915" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\eta^{\mu\nu} = \text{diag}(1, -1, -1, -1)
+\end{equation}\]</div>
+<p>利用度规张量可以实现洛伦兹指标升降：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1fe4ce67-5c36-46c0-876d-9787652e8780">
+<span class="eqno">(13)<a class="headerlink" href="#equation-1fe4ce67-5c36-46c0-876d-9787652e8780" title="Permalink to this equation">#</a></span>\[\begin{equation}
+x_\mu = \eta_{\mu\nu} x^\nu = (x^0, -x^1, -x^2, -x^3) = (x_0, x_1, x_2, x_3)
+\end{equation}\]</div>
+<p>其中<span class="math notranslate nohighlight">\(x_\mu\)</span>称为协变矢量。</p>
+<p>洛伦兹变换定义为保间隔不变的坐标变换：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-044232d1-d59e-45c4-8008-6e90a3f3a49f">
+<span class="eqno">(14)<a class="headerlink" href="#equation-044232d1-d59e-45c4-8008-6e90a3f3a49f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+x^\mu \mapsto x'^\mu = \Lambda^\mu_{\ \ \nu} x^\nu
+\end{equation}\]</div>
+<p>其中<span class="math notranslate nohighlight">\(\Lambda^\mu_{\ \ \nu}\)</span>为洛伦兹变换矩阵，它的逆写作<span class="math notranslate nohighlight">\((\Lambda^\mu_{\ \ \nu})^{-1} \equiv \Lambda_\mu^{\ \ \nu}\)</span>。
+由间隔不变的定义：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2303e53f-3d08-426b-8dd4-4796c64c2a22">
+<span class="eqno">(15)<a class="headerlink" href="#equation-2303e53f-3d08-426b-8dd4-4796c64c2a22" title="Permalink to this equation">#</a></span>\[\begin{equation}
+x^2  = \eta_{\mu\nu} x^\mu x^\nu \mapsto \eta_{\mu\nu} x'^\mu x'^\nu = \eta_{\mu\nu} \Lambda^\mu_{\ \ \rho} \Lambda^\nu_{\ \ \sigma} x^\rho x^\sigma = \eta_{\rho\sigma} x^\rho x^\sigma
+\end{equation}\]</div>
+<p>得到洛伦兹变换矩阵定义式：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-334d4ab9-e0ee-436b-9c97-05b4bda2cddf">
+<span class="eqno">(16)<a class="headerlink" href="#equation-334d4ab9-e0ee-436b-9c97-05b4bda2cddf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\boxed{\eta_{\mu\nu} \Lambda^\mu_{\ \ \rho} \Lambda^\nu_{\ \ \sigma} = \eta_{\rho\sigma}}
+\end{equation}\]</div>
+<p>同时间隔不变也给出逆变矢量在洛伦兹变换下的变换规则：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f74f2ba8-0832-4a4a-869b-76e51ade2db0">
+<span class="eqno">(17)<a class="headerlink" href="#equation-f74f2ba8-0832-4a4a-869b-76e51ade2db0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+x_\mu \mapsto x'_\mu = \Lambda_\mu^{\ \ \nu} x_\nu
+\end{equation}\]</div>
+<p>对洛伦兹变换矩阵定义式两边乘以<span class="math notranslate nohighlight">\(\Lambda_{\alpha}^{\ \ \rho} \Lambda_{\beta}^{\ \ \sigma}\)</span>，得到：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e584b20f-0383-4620-acc3-92de18a47944">
+<span class="eqno">(18)<a class="headerlink" href="#equation-e584b20f-0383-4620-acc3-92de18a47944" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\boxed{\eta_{\alpha\beta} = \Lambda_{\alpha}^{\ \ \rho} \Lambda_{\beta}^{\ \ \sigma} \eta_{\rho\sigma}}
+\end{equation}\]</div>
+<p>因此，闵氏度规是洛伦兹不变张量。</p>
+<p>两个洛伦兹矢量的内积记为：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f7c4534a-d455-4002-892a-a530b5d35a3f">
+<span class="eqno">(19)<a class="headerlink" href="#equation-f7c4534a-d455-4002-892a-a530b5d35a3f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+a \cdot b = a^\mu b_\mu = a_\mu b^\mu
+\end{equation}\]</div>
+<p>四维导数：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-300ec741-dcf4-4e72-8f84-cfd19760ced7">
+<span class="eqno">(20)<a class="headerlink" href="#equation-300ec741-dcf4-4e72-8f84-cfd19760ced7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\partial_\mu = \frac{\partial}{\partial x^\mu} = \left(\frac{\partial}{\partial t}, \nabla\right)
+\end{equation}\]</div>
+<p>其中<span class="math notranslate nohighlight">\(\nabla\)</span>为三维梯度算符。</p>
+<div class="amsmath math notranslate nohighlight" id="equation-63d3d70c-8d4c-41a5-87d1-b43ec4058031">
+<span class="eqno">(21)<a class="headerlink" href="#equation-63d3d70c-8d4c-41a5-87d1-b43ec4058031" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\partial^\mu = \frac{\partial}{\partial x_\mu} = \left(\frac{\partial}{\partial t}, -\nabla\right)
+\end{equation}\]</div>
+<p>四维导数的洛伦兹变换规则：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4d0b87be-81e5-47bc-b924-def81428e9b6">
+<span class="eqno">(22)<a class="headerlink" href="#equation-4d0b87be-81e5-47bc-b924-def81428e9b6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\partial_\mu \mapsto \partial'_\mu = \frac{\partial}{\partial x'^\mu} = \Lambda_\mu^{\ \ \nu} \frac{\partial}{\partial x^\nu} = \Lambda_\mu^{\ \ \nu} \partial_\nu
+\end{equation}\]</div>
+<p>因此，四维导数也是洛伦兹矢量。四维达朗伯算符写为</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7a5f3c52-0433-479d-aac0-e1c017409043">
+<span class="eqno">(23)<a class="headerlink" href="#equation-7a5f3c52-0433-479d-aac0-e1c017409043" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\Box = \partial_\mu \partial^\mu = \frac{\partial^2}{\partial t^2} - \nabla^2
+\end{equation}\]</div>
+<p>四维Levi-Civita张量记为</p>
+<div class="amsmath math notranslate nohighlight" id="equation-977b37b6-fba6-4a91-bbf5-172ae29b2b0f">
+<span class="eqno">(24)<a class="headerlink" href="#equation-977b37b6-fba6-4a91-bbf5-172ae29b2b0f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\epsilon^{\mu\nu\rho\sigma} = \left\{ 
+  \begin{array}{ll}
+    1 &amp; \text{(0,1,2,3)的偶排列} \\
+    -1 &amp; \text{(0,1,2,3)的奇排列} \\
+    0 &amp; \text{其它}
+\end{array}
+\right.
+\end{equation}\]</div>
+<div class="admonition- admonition">
+<p class="admonition-title">作业</p>
+<ul class="simple">
+<li><p>证明：</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\Lambda^\mu_{\ \ \alpha} \Lambda^\nu_{\ \ \beta} \Lambda^\rho_{\ \ \gamma} \Lambda^\sigma_{\ \ \delta} \epsilon^{\alpha\beta\gamma\delta} = \det(\Lambda) \epsilon^{\mu\nu\rho\sigma}
+\end{equation*}\]</div>
+<p>其中<span class="math notranslate nohighlight">\(\det(\Lambda)\)</span>为洛伦兹变换矩阵的行列式。我们将主要关心的是与单位变换连通的<span class="math notranslate nohighlight">\(\det(\Lambda) = 1\)</span>的情形。</p>
+</div>
+</section>
+</section>
+<section id="id6">
+<h2>相对论性量子力学与因果律破坏<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>既然要讨论相对论性量子力学效应，一个自然想法是将薛定谔方程推广到相对论性的情形。薛定谔方程可以写为</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8d93c6d5-0ab3-4edc-ad7c-3cc04eaeafb1">
+<span class="eqno">(25)<a class="headerlink" href="#equation-8d93c6d5-0ab3-4edc-ad7c-3cc04eaeafb1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+i \frac{\partial}{\partial t} |\psi(t) \rangle = H |\psi(t)\rangle
+\end{equation}\]</div>
+<p>因此态矢随时间演化通过哈密顿量决定：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d526ee67-4c6f-4e43-a56b-21e782d94717">
+<span class="eqno">(26)<a class="headerlink" href="#equation-d526ee67-4c6f-4e43-a56b-21e782d94717" title="Permalink to this equation">#</a></span>\[\begin{equation}
+|\psi(t)\rangle = e^{-iHt} |\psi(0)\rangle
+\end{equation}\]</div>
+<p>在非相对论力学中，自由粒子哈密顿量可以通过动量算符写为</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d637be90-24da-43fd-acdb-ba6a8d3e9a14">
+<span class="eqno">(27)<a class="headerlink" href="#equation-d637be90-24da-43fd-acdb-ba6a8d3e9a14" title="Permalink to this equation">#</a></span>\[\begin{equation}
+H = \frac{\boldsymbol{p}^2}{2m} 
+\end{equation}\]</div>
+<p>一个平庸的相对论性推广是将<span class="math notranslate nohighlight">\(H\)</span>写为</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bc0040f3-3f9f-4fc5-8215-4f5c4817372a">
+<span class="eqno">(28)<a class="headerlink" href="#equation-bc0040f3-3f9f-4fc5-8215-4f5c4817372a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+H = + \sqrt{\boldsymbol{p}^2 + m^2}
+\end{equation}\]</div>
+<p>在取根号的时候，另一种选择是取负根，但这时就会碰到所谓的负能态问题。没有太多理由，我们这里很简单地取正根来回避这个问题。虽然哈密顿量被人为写成了正能、与相对论性质能关系相符的形式，但求解这个薛定谔方程出现所谓的因果律破坏疑难。</p>
+<p>因果律是狭义相对论的一个重要部分。对于类空间隔的两个事件<span class="math notranslate nohighlight">\(O_1\)</span>和<span class="math notranslate nohighlight">\(O_2\)</span>，满足<span class="math notranslate nohighlight">\((\boldsymbol{x}_1 - \boldsymbol{x}_2)^2 &gt; t^2\)</span>，因此即使是光信号也无法在两个事件之间传递信息。类空间隔可以用如下图的闵氏时空图示意：</p>
+<figure class="align-default" id="lightcone-of-o-1">
+<a class="reference internal image-reference" href="_images/lightcone.png"><img alt="_images/lightcone.png" src="_images/lightcone.png" style="height: 450px;" /></a>
+</figure>
+<p>设想在<span class="math notranslate nohighlight">\(T=0\)</span>时刻，一个粒子位于<span class="math notranslate nohighlight">\(\boldsymbol{x} = 0\)</span>：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9e53c7d7-9d6a-4b50-ac3b-301641bcbfdc">
+<span class="eqno">(29)<a class="headerlink" href="#equation-9e53c7d7-9d6a-4b50-ac3b-301641bcbfdc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+|\psi(0)\rangle = | \boldsymbol{x} =  0 \rangle
+\end{equation}\]</div>
+<p>在<span class="math notranslate nohighlight">\(t\)</span>时刻，我们问这个粒子是否能到达其自身在零时刻的光锥之外。这可通过计算粒子从<span class="math notranslate nohighlight">\(\boldsymbol{x} = 0\)</span>到<span class="math notranslate nohighlight">\(\boldsymbol{x} = \boldsymbol{r}\)</span>的概率幅来判断：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e535c982-71dd-4eed-9a5c-716b8d8677a5">
+<span class="eqno">(30)<a class="headerlink" href="#equation-e535c982-71dd-4eed-9a5c-716b8d8677a5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+{\cal A} = \langle \boldsymbol{r} |\psi(t) \rangle = \langle \boldsymbol{r} | e^{-i H t} |\psi(0)\rangle
+\end{equation}\]</div>
+<p>其中<span class="math notranslate nohighlight">\(|\boldsymbol{r}\rangle\)</span>是位置本征态。我们可以将<span class="math notranslate nohighlight">\(|\boldsymbol{r}\rangle\)</span>展开为动量本征态的叠加：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-47820f76-88e9-4cd6-b311-93d252c9a447">
+<span class="eqno">(31)<a class="headerlink" href="#equation-47820f76-88e9-4cd6-b311-93d252c9a447" title="Permalink to this equation">#</a></span>\[\begin{equation}
+|\boldsymbol{r}\rangle = \int d^3 p  \langle \boldsymbol{r} | \boldsymbol{p} \rangle |\boldsymbol{r} \rangle = \int \frac{d^3 p}{(2\pi)^{3/2}} e^{i \boldsymbol{p} \cdot \boldsymbol{r}} |\boldsymbol{p}\rangle
+\end{equation}\]</div>
+<p>代入概率幅公式中，得到</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bdf6eba8-fcd3-4f5c-b910-0cf6ffc43603">
+<span class="eqno">(32)<a class="headerlink" href="#equation-bdf6eba8-fcd3-4f5c-b910-0cf6ffc43603" title="Permalink to this equation">#</a></span>\[\begin{equation}
+{\cal A} = \int \frac{d^3 p}{(2\pi)^3} e^{i \boldsymbol{p} \cdot \boldsymbol{r}} e^{-i \omega_p t}
+\end{equation}\]</div>
+<p>其中</p>
+<div class="amsmath math notranslate nohighlight" id="equation-410a21e1-3722-4c77-aab4-f5849aecaad2">
+<span class="eqno">(33)<a class="headerlink" href="#equation-410a21e1-3722-4c77-aab4-f5849aecaad2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\omega_p = \sqrt{\boldsymbol{p}^2 + m^2}
+\end{equation}\]</div>
+<p>在球极坐标下，令<span class="math notranslate nohighlight">\(\boldsymbol{p} \cdot \boldsymbol{r} = p r \cos\theta\)</span>，</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6b89049d-a0f7-4030-bfbe-8a350a774cc2">
+<span class="eqno">(34)<a class="headerlink" href="#equation-6b89049d-a0f7-4030-bfbe-8a350a774cc2" title="Permalink to this equation">#</a></span>\[\begin{align}
+{\cal A} &amp;= \int_0^\infty \frac{p^2 dp}{(2\pi)^3} \int_{-1}^1 d \cos\theta \int_0^{2\pi} d\phi \ e^{i p r \cos\theta} e^{-i \omega_p t} \\
+&amp;= \int_0^\infty \frac{p^2 dp}{(2 \pi)^2} \frac{1}{ipr} \left( e^{i p r} - e^{-i p r} \right) e^{-i \omega_p t} \\
+&amp;= \int_{-\infty}^{\infty} \frac{p dp}{(2 \pi)^2} \frac{1}{ir} e^{ipr} e^{-i \sqrt{\boldsymbol{p}^2 + m^2} t}
+\end{align}\]</div>
+<p>到了这一步，情况变得有点复杂。实际上，<span class="math notranslate nohighlight">\({\cal A}\)</span>本身是发散的，应看成一个分布。我们作一个简化，让<span class="math notranslate nohighlight">\(m=0\)</span>，这时积分变为</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5cf12fae-a364-4ab1-a7a5-6831f2fe7d8e">
+<span class="eqno">(35)<a class="headerlink" href="#equation-5cf12fae-a364-4ab1-a7a5-6831f2fe7d8e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+{\cal A} = \int_{-\infty}^{\infty} \frac{p dp}{(2 \pi)^2} \frac{1}{ir} e^{-i p (t - r)} = \frac{1}{2 \pi r} \delta'(t - r)
+\end{equation}\]</div>
+<p>其中<span class="math notranslate nohighlight">\(\delta'(x)\)</span>是delta函数的导数。delta函数本身应从分布的意义上理解，其导数也同样。因此，我们看到在零质量极限下，<span class="math notranslate nohighlight">\({\cal A}\)</span>是一个分布（distribution）而非普通函数，其支点在<span class="math notranslate nohighlight">\(t = r\)</span>光锥上。</p>
+<p>下面我们来看质量非零的情况。对于一个分布，我们可以引入一个正规化参数使其成为一个普通函数。这里，我们可以让<span class="math notranslate nohighlight">\(t \to t - i \epsilon\)</span>，其中<span class="math notranslate nohighlight">\(\epsilon\)</span>是一个正实数，在<span class="math notranslate nohighlight">\(\epsilon \to 0\)</span>的极限下过渡到对应的分布。这时概率幅写为</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1af50d55-f190-4b0e-9c05-6f18d5f71861">
+<span class="eqno">(36)<a class="headerlink" href="#equation-1af50d55-f190-4b0e-9c05-6f18d5f71861" title="Permalink to this equation">#</a></span>\[\begin{equation}
+{\cal A} = \int_{-\infty}^{\infty} \frac{p dp}{(2 \pi)^2} \frac{1}{ir} e^{i p  r} e^{-i \sqrt{\boldsymbol{p}^2 + m^2} t - \epsilon \sqrt{\boldsymbol{p}^2 + m^2}}
+\end{equation}\]</div>
+<p>将<span class="math notranslate nohighlight">\(p\)</span>解析延拓到整个复平面，被积函数具有形式</p>
+<div class="amsmath math notranslate nohighlight" id="equation-784f883d-a2a0-4dc3-861e-a28081d8331b">
+<span class="eqno">(37)<a class="headerlink" href="#equation-784f883d-a2a0-4dc3-861e-a28081d8331b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+F(p) e^{ipr - i \sqrt{p^2 + m^2} t}
+\end{equation}\]</div>
+<p><span class="math notranslate nohighlight">\(\lim_{p \to \pm \infty}F(p) = \lim_{p \to \pm \infty} p e^{-\epsilon \sqrt{p^2 + m^2}} \to 0\)</span>。借助复变函数中的约当引理，可以将对<span class="math notranslate nohighlight">\(p\)</span>的积分解析延拓到上半平面，并忽略大圆弧的贡献，仅留下沿割线两岸的贡献，如下图所示。</p>
+<figure class="align-default" id="id7">
+<a class="reference internal image-reference" href="_images/contour_naive.png"><img alt="_images/contour_naive.png" src="_images/contour_naive.png" style="height: 450px;" /></a>
+</figure>
+<p>沿着割线两岸的积分可以写作：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-39db9119-fff2-49a9-acf2-3b022eef6561">
+<span class="eqno">(38)<a class="headerlink" href="#equation-39db9119-fff2-49a9-acf2-3b022eef6561" title="Permalink to this equation">#</a></span>\[\begin{equation}
+{\cal A} = \frac{i}{(2 \pi)^2 r} \int_m^\infty z dz\ e^{-zr} \Big[ e^{t \sqrt{z^2 - m^2}} - e^{- t \sqrt{z^2 - m^2}} \Big]
+\end{equation}\]</div>
+<p>注意到对任何<span class="math notranslate nohighlight">\(r&gt;t\)</span>，即在光锥之外，被积函数是正定的，因此积分结果也必然非零。这告诉我们对哈密顿量所作的简单相对论性修改无法满足因果律的要求，必须引入新的理论形式。</p>
+<p>上面积分的计算过程中引入<span class="math notranslate nohighlight">\(t - i \epsilon\)</span>的过程也许会让人困惑。为了更好看清这个手续是合法的，我们引用这个积分的封闭解：</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f59960bf-1a96-4e9c-bb81-5c371ac05af2">
+<span class="eqno">(39)<a class="headerlink" href="#equation-f59960bf-1a96-4e9c-bb81-5c371ac05af2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+{\cal A} = \frac{m^2}{2 \pi^2} \frac{t}{i \tau^2} K_2(i m \tau)
+\end{equation}\]</div>
+<p>其中</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e6538961-7d39-4f42-88d7-dd79b0aa4b8f">
+<span class="eqno">(40)<a class="headerlink" href="#equation-e6538961-7d39-4f42-88d7-dd79b0aa4b8f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+  \tau = \lim_{\epsilon \to 0_+} \sqrt{(t - i \epsilon)^2 - r^2}
+\end{equation}\]</div>
+<p><span class="math notranslate nohighlight">\(K_2(z)\)</span>是第二类贝塞尔函数。在<span class="math notranslate nohighlight">\(\tau = 0\)</span>，即在光锥上，这个结果必须解释成分布，而在光锥之外，它的行为是良定义函数。我们关心的主要是类空间隔的信号传播，在这个区域<span class="math notranslate nohighlight">\(\epsilon \to 0\)</span>的极限是光滑的。<a class="footnote-reference brackets" href="#ack1" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="ack1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">1</a><span class="fn-bracket">]</span></span>
+<p>此处感谢与陈豪同学的讨论。</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">量子场论讲义（2023年秋冬学期）</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">量子场论简介</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">预备知识（持续更新中）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">自然单位制</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">狭义相对论约定</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">相对论性量子力学与因果律破坏</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 朱华星
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
