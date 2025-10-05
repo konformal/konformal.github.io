@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anharmonic Oscillator Correlation Functions (Exact)</title>
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body);"></script>
+
+  <style>
+    body { font-family: monospace; margin: 20px; background: #fdfdfd; }
+    h2 { color: #2c3e50; }
+    .term { margin: 6px 0; padding: 5px; background: #fff; border-left: 3px solid #27ae60; }
+    .input { margin: 15px 0; }
+    button { padding: 6px 12px; background: #27ae60; color: white; border: none; cursor: pointer; }
+    button:hover { background: #219653; }
+    input { width: 80px; padding: 4px; }
+    .warning { color: #e74c3c; font-size: 0.9em; margin-top: 5px; }
+    .formula-box {
+      background: #f8f9fa;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 6px;
+      border-left: 4px solid #3498db;
+      font-family: 'Cambria Math', serif;
+    }
+    .katex { font-size: 1.1em; }
+  </style>
+</head>
+<body>
+  <h2>Correlation Functions for anharmonic oscillator (Exact)</h2>
+
+  <!-- Mathematical Background -->
+  <div class="formula-box">
+    <p>Consider the Euclidean path integral for anharmonic oscillator:</p>
+
+    <!--- show the action-->
+    <p><strong>Action:</strong></p>
+    <p>\[ S_E[\phi] = \int d\tau \left( \frac{1}{2} \left( \frac{d\phi}{d\tau} \right)^2 + \frac{1}{2} m^2 \phi^2 + \frac{\lambda}{4!} \phi^4 \right) \]</p>
+
+    <!--- Generating functional -->
+    <p><strong>Generating functional:</strong></p>
+    <p>\[ Z[J] = \int \mathcal{D}\phi \exp\left( -S_E[\phi] + \int d\tau J(\tau) \phi(\tau) \right) \]</p>
+
+    <p><strong>Time-ordered \(n\)-point function (without divided by \(Z[0]\)):</strong></p>
+    <p>\[   \left. \frac{\delta^n Z[J]}{\delta J(\tau_1) \cdots \delta J(\tau_n)} \right|_{J=0} \]</p>
+
+    <p><strong>Perturbative expansion for time-ordered correlators using functional derivative (without divided by \(Z[0]\)):</strong></p>
+    <p>\[ \sum_{k=0}^{\infty} \frac{(-\lambda)^k}{k! (4!)^k} \int d\tau_1' \cdots d\tau_k' \left. \frac{\delta^{n + 4k} Z[J]}{\delta J(\tau_1) \cdots \delta J(\tau_n) \delta J(\tau_1')^4 \cdots \delta J(\tau_k')^4} \right|_{J=0} \]</p>
+
+    <p>In this demo, each diagram is labeled by its order \(k\) (power of \(\lambda^k\)).</p>
+  </div>
+
+  <div class="input">
+    Max order in \( \lambda \): <input type="number" id="maxOrder" value="1" min="0" max="5"> <br><br>
+    Number of external legs (n-point): <input type="number" id="nPoint" value="2" min="0" max="6"> <br><br>
+    <button onclick="compute()">Compute</button>
+    <div class="warning" id="warning"></div>
+  </div>
+  <div id="output"></div>
+
+  <script>
+    // ========== Rational Number Class ==========
+    class Rational {
+      constructor(num, den = 1) {
+        if (den === 0) throw new Error("Denominator cannot be zero");
+        if (den < 0) { num = -num; den = -den; }
+        const g = this.gcd(Math.abs(num), den);
+        this.num = num / g;
+        this.den = den / g;
+      }
+      gcd(a, b) { return b === 0 ? a : this.gcd(b, a % b); }
+      add(other) {
+        const num = this.num * other.den + other.num * this.den;
+        const den = this.den * other.den;
+        return new Rational(num, den);
+      }
+      toString() {
+        if (this.den === 1) return `${this.num}`;
+        return `${this.num}/${this.den}`;
+      }
+    }
+
+    // ========== Combinatorics ==========
+    function factorial(n) {
+      let res = 1;
+      for (let i = 2; i <= n; i++) res *= i;
+      return res;
+    }
+
+    function allPairings(list) {
+      if (list.length === 0) return [[]];
+      if (list.length % 2 === 1) return [];
+      const result = [];
+      const first = list[0];
+      for (let i = 1; i < list.length; i++) {
+        const pair = [first, list[i]];
+        const rest = [...list.slice(1, i), ...list.slice(i + 1)];
+        for (const sub of allPairings(rest)) {
+          result.push([pair, ...sub]);
+        }
+      }
+      return result;
+    }
+
+    function canonicalize(contraction) {
+      return contraction
+        .map(pair => pair.slice().sort())
+        .sort((a, b) => {
+          const s1 = a.toString();
+          const s2 = b.toString();
+          return s1 < s2 ? -1 : s1 > s2 ? 1 : 0;
+        });
+    }
+
+    function patternToString(pat) {
+      return pat.length === 0 ? "vacuum" : JSON.stringify(pat);
+    }
+
+    // ========== Main Computation ==========
+    function compute() {
+      const maxOrder = parseInt(document.getElementById("maxOrder").value);
+      const nPoint = parseInt(document.getElementById("nPoint").value);
+      const warningEl = document.getElementById("warning");
+      warningEl.textContent = "";
+
+      if (isNaN(maxOrder) || maxOrder < 0 || isNaN(nPoint) || nPoint < 0) {
+        alert("Please enter non-negative integers.");
+        return;
+      }
+
+      if ((nPoint + 4 * maxOrder) % 2 !== 0 && maxOrder > 0) {
+        // Note: if maxOrder=0, we only check nPoint parity
+        if (nPoint % 2 !== 0) {
+          document.getElementById("output").innerHTML = 
+            `<p style="color:#e74c3c">No diagrams: total number of legs (${nPoint}) is odd → cannot fully contract.</p>`;
+          return;
+        }
+      }
+
+      if (maxOrder > 4 || nPoint > 6) {
+        warningEl.textContent = `⚠️ Warning: This may take a long time.`;
+      }
+
+      const externals = [];
+      for (let i = 1; i <= nPoint; i++) {
+        externals.push("x" + i);
+      }
+
+      // Map: patternString → { totalCoeff, ordersSeen }
+      // But easier: store list of {coeff, order, pattern}
+      const termList = [];
+
+      for (let order = 0; order <= maxOrder; order++) {
+        const totalLegs = nPoint + 4 * order;
+        if (totalLegs % 2 !== 0) continue;
+
+        const derivs = [...externals];
+        for (let v = 1; v <= order; v++) {
+          for (let i = 0; i < 4; i++) derivs.push(v);
+        }
+
+        const contractions = allPairings(derivs);
+        const sign = (order % 2 === 1) ? -1 : 1;
+        const baseCoeff = (order === 0) ? 
+          new Rational(1) : 
+          new Rational(sign, factorial(order) * Math.pow(factorial(4), order));
+
+        for (const cont of contractions) {
+          const canon = canonicalize(cont);
+          const patternStr = patternToString(canon);
+          termList.push({
+            coeff: baseCoeff,
+            order: order,
+            pattern: patternStr
+          });
+        }
+      }
+
+      // Group by pattern
+      const grouped = new Map();
+      for (const t of termList) {
+        if (!grouped.has(t.pattern)) {
+          grouped.set(t.pattern, []);
+        }
+        grouped.get(t.pattern).push(t);
+      }
+
+      // Display
+      const out = document.getElementById("output");
+      const nStr = nPoint === 0 ? "Z[0]" : `\\( \\langle \\phi_{x_1} \\cdots \\phi_{x_${nPoint}} \\rangle \\)`;
+      out.innerHTML = `<h3>Expansion for ${nStr} up to \\( λ^{${maxOrder}} \\) (exact):</h3>`;
+
+      if (grouped.size === 0) {
+        out.innerHTML += "<p>No valid contractions.</p>";
+      } else {
+        for (const [patternStr, terms] of grouped.entries()) {
+          // Group terms by order for clean λ^n display
+          const byOrder = new Map();
+          for (const t of terms) {
+            if (!byOrder.has(t.order)) byOrder.set(t.order, new Rational(0));
+            byOrder.set(t.order, byOrder.get(t.order).add(t.coeff));
+          }
+
+          let termParts = [];
+          for (const [ord, coeff] of byOrder.entries()) {
+            if (coeff.num === 0) continue;
+            let lambdaPart = ord === 0 ? "" : ord === 1 ? "λ" : `λ^{${ord}}`;
+            let coeffStr = coeff.toString();
+            if (ord === 0) {
+              termParts.push(`${coeffStr}`);
+            } else {
+              termParts.push(`${coeffStr} ${lambdaPart}`);
+            }
+          }
+
+          const fullCoeff = termParts.join(" + ");
+          let displayPattern = patternStr === "vacuum" ? "(vacuum)" : patternStr.replace(/,/g, ', ');
+          out.innerHTML += `<div class="term">${fullCoeff} \\cdot ${displayPattern}</div>`;
+        }
+      }
+
+      renderMathInElement(out);
+    }
+
+    window.onload = () => compute();
+  </script>
+</body>
+</html>
